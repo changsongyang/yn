@@ -106,7 +106,7 @@ const hideWindow = () => {
   if (win) {
     win.hide()
     win.setSkipTaskbar(true)
-    isMacos && app.dock.hide()
+    isMacos && app.dock?.hide()
   }
 }
 
@@ -325,7 +325,7 @@ const showWindow = (showInCurrentWindow = true) => {
     const show = () => {
       if (win) {
         // macos need show in dock
-        isMacos && app.dock.show()
+        isMacos && app.dock?.show()
         win.setSkipTaskbar(false)
         win.show()
         win.focus()
