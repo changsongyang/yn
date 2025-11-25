@@ -436,6 +436,7 @@ const data: BaseLanguage = {
         'multimd-rowspan': 'Включить синтаксис объединением рядов [multimd]:',
         'multimd-headerless': 'Включить синтаксис без заголовков [multimd]:',
         'multimd-multibody': 'Включить многокомпонентный синтаксис [multimd]:',
+        'text-autospace': 'Автоматически добавлять пробелы между CJK и полуширинными символами',
         'extra-css-style': 'Пользовательский CSS стиль',
       },
       'view': {

@@ -435,6 +435,7 @@ const data = {
         'multimd-rowspan': '[markdown-it-multimd-table]: Enable rowspan syntax',
         'multimd-headerless': '[markdown-it-multimd-table]: Enable headerless syntax',
         'multimd-multibody': '[markdown-it-multimd-table]: Enable multibody syntax',
+        'text-autospace': 'Auto add spaces between CJK and half-width characters',
         'extra-css-style': 'Custom CSS Style',
       },
       'view': {

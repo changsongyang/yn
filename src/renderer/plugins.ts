@@ -78,6 +78,7 @@ import aiCopilot from '@fe/plugins/ai-copilot'
 import viewLinks from '@fe/plugins/view-links'
 import insertTable from '@fe/plugins/insert-table'
 import textComparator from '@fe/plugins/text-comparator'
+import textAutospace from '@fe/plugins/text-autospace'
 
 export default [
   buildInRenderers,
@@ -160,4 +161,5 @@ export default [
   viewLinks,
   insertTable,
   textComparator,
+  textAutospace,
 ]
