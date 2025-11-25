@@ -76,14 +76,16 @@ For more information on how to use the following functions, please see [characte
 
 ## Changelogs
 
-### [v3.84.0](https://github.com/purocean/yn/releases/tag/v3.84.0) 2025-08-06
+### [v3.85.1](https://github.com/purocean/yn/releases/tag/v3.85.1) 2025-11-25
 
-[Windows](https://github.com/purocean/yn/releases/download/v3.84.0/Yank-Note-win-x64-3.84.0.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.84.0/Yank-Note-mac-arm64-3.84.0.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.84.0/Yank-Note-mac-x64-3.84.0.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.84.0/Yank-Note-linux-x86_64-3.84.0.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.84.0/Yank-Note-linux-amd64-3.84.0.deb)
+[Windows](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-win-x64-3.85.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-arm64-3.85.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-x64-3.85.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-x86_64-3.85.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-amd64-3.85.1.deb)
 
-1. feat: Support parsing `#tag` labels in documents and tags defined in frontmatter  
-2. feat: Support customizing the PlantUML API in settings  
-3. feat: Add editor wrap indent setting  
-4. feat(plugin): Support adding `suggestions` suggestion lists when defining plugin settings  
+1. feat: Add an option to automatically insert spaces between Chinese and English in the settings
+3. feat: Optimize the settings panel interaction, add a suggested list for image storage directories, and add code highlighting to custom CSS styles
+2. feat: Improve the interaction of the quick filter, add character highlighting
+4. feat: Upgrade Electron to 38.7.1
+5. fix: Fix the incorrect error message location in the settings panel
+6. feat(plugin): Add the text highlighting utility `ctx.utils.createTextHighlighter`
 
 [More release notes](https://github.com/purocean/yn/releases)
 
