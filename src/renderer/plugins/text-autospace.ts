@@ -7,7 +7,11 @@ export default {
 
     async function updateTextAutospaceStyle (enabled: boolean) {
       const style = enabled
-        ? '.markdown-view .markdown-body { text-autospace: normal; }'
+        ? `
+          .markdown-view .markdown-body { text-autospace: normal; }
+          .markdown-view .markdown-body code,
+          .markdown-view .markdown-body pre { text-autospace: no-autospace; }
+        `
         : ''
 
       if (!textAutospaceStyle) {
