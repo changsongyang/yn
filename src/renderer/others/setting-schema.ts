@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es'
 import { DEFAULT_EXCLUDE_REGEX } from '@share/misc'
 import { isMacOS, isWindows } from '@fe/support/env'
-import { FLAG_DISABLE_XTERM, FLAG_MAS } from '@fe/support/args'
+import { DOM_CLASS_NAME, FLAG_DISABLE_XTERM, FLAG_MAS } from '@fe/support/args'
 import { SettingSchema } from '@fe/types'
 
 const schema: SettingSchema = ({
@@ -109,20 +109,13 @@ const schema: SettingSchema = ({
       defaultValue: 'local-png',
       title: 'T_setting-panel.schema.plantuml-api',
       type: 'string',
-      enum: [
-        'local-png',
-        'local-svg',
-        'https://www.plantuml.com/plantuml/png/{data}',
-        'https://www.plantuml.com/plantuml/svg/{data}',
+      minLength: 9,
+      suggestions: [
+        { label: 'Local (PNG) - Need Java and Graphviz', value: 'local-png' },
+        { label: 'Local (SVG) - Need Java and Graphviz', value: 'local-svg' },
+        { label: 'Online (plantuml.com) - PNG', value: 'https://www.plantuml.com/plantuml/png/{data}' },
+        { label: 'Online (plantuml.com) - SVG', value: 'https://www.plantuml.com/plantuml/svg/{data}' },
       ],
-      options: {
-        enum_titles: [
-          'Local (PNG) - Need Java and Graphviz',
-          'Local (SVG) - Need Java and Graphviz',
-          'Online (plantuml.com) - PNG',
-          'Online (plantuml.com) - SVG',
-        ],
-      },
       required: true,
       group: 'other',
     },
@@ -153,6 +146,14 @@ const schema: SettingSchema = ({
       group: 'image',
       required: true,
       pattern: '^(?![./]+\\{docName\\})[^\\\\<>?:"|*]{1,}$',
+      suggestions: [
+        './FILES/{docName}',
+        './FILES/{docBasename}',
+        './FILES/{docSlug}',
+        './FILES/{docHash}',
+        './FILES/{date}',
+        '/assets/{docPath}',
+      ],
       options: {
         patternmessage: '[\\<>?:"|*] are not allowed. Cannot starts with ./{docName}, /{docName} or {docName}.'
       },
@@ -218,6 +219,17 @@ const schema: SettingSchema = ({
       group: 'editor',
       required: true,
     },
+    'editor.wrap-indent': {
+      defaultValue: 'same',
+      title: 'T_setting-panel.schema.editor.wrap-indent',
+      type: 'string',
+      enum: ['same', 'indent', 'deepIndent', 'none'],
+      options: {
+        enum_titles: ['Same', 'Indent', 'Deep Indent', 'None'],
+      },
+      group: 'editor',
+      required: true,
+    },
     'editor.font-family': {
       defaultValue: '',
       title: 'T_setting-panel.schema.editor.font-family',
@@ -225,6 +237,26 @@ const schema: SettingSchema = ({
       group: 'editor',
       options: {
         inputAttributes: { placeholder: 'e.g., \'Courier New\', monospace' }
+      },
+    },
+    'editor.mouse-wheel-scroll-sensitivity': {
+      defaultValue: 1.0,
+      title: 'T_setting-panel.schema.editor.mouse-wheel-scroll-sensitivity',
+      type: 'number',
+      format: 'range',
+      minimum: 0.1,
+      maximum: 5,
+      step: 0.1,
+      group: 'editor',
+      required: true,
+    },
+    'editor.rulers': {
+      defaultValue: '',
+      title: 'T_setting-panel.schema.editor.rulers',
+      type: 'string',
+      group: 'editor',
+      options: {
+        inputAttributes: { placeholder: 'e.g., 80,120' }
       },
     },
     'editor.font-ligatures': {
@@ -331,6 +363,14 @@ const schema: SettingSchema = ({
       group: 'render',
       required: true,
     },
+    'render.md-hash-tags': {
+      defaultValue: true,
+      title: 'T_setting-panel.schema.render.md-hash-tags',
+      type: 'boolean',
+      format: 'checkbox',
+      group: 'render',
+      required: true,
+    },
     'render.md-typographer': {
       defaultValue: false,
       title: 'T_setting-panel.schema.render.md-typographer',
@@ -350,6 +390,14 @@ const schema: SettingSchema = ({
     'render.md-sub': {
       defaultValue: true,
       title: 'T_setting-panel.schema.render.md-sub',
+      type: 'boolean',
+      format: 'checkbox',
+      group: 'render',
+      required: true,
+    },
+    'render.text-autospace': {
+      defaultValue: false,
+      title: 'T_setting-panel.schema.render.text-autospace',
       type: 'boolean',
       format: 'checkbox',
       group: 'render',
@@ -390,6 +438,20 @@ const schema: SettingSchema = ({
       group: 'render',
       required: true,
       needReloadWindowWhenChanged: true,
+    },
+    'render.extra-css-style': {
+      defaultValue: '.markdown-view .markdown-body a {\n  /* color: red; */\n}',
+      title: 'T_setting-panel.schema.render.extra-css-style',
+      type: 'string',
+      group: 'render',
+      format: 'textarea',
+      options: {
+        inputAttributes: {
+          placeholder: 'e.g., .markdown-view .markdown-body a { color: red; }',
+          class: `je-textarea ${DOM_CLASS_NAME.CODE_SYNTAX_HIGHLIGHT_FONT}`,
+          style: 'height: 8em; background-color: var(--g-color-90);',
+        }
+      },
     },
     shell: {
       defaultValue: '',

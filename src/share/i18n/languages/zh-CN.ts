@@ -398,8 +398,11 @@ const data: BaseLanguage = {
         'ordered-list-completion': '有序列表补全',
         'minimap': '显示小地图',
         'line-numbers': '行号',
+        'wrap-indent': '换行缩进',
         'enable-preview': '开启预览 - 打开新文件使用临时标签，双击标签以更改',
         'font-family': '字体',
+        'rulers': '标尺',
+        'mouse-wheel-scroll-sensitivity': '鼠标滚动敏感度',
         'font-ligatures': '字体连字',
         'complete-emoji': '自动补全 Emoji - 输入 : 时显示 Emoji 列表',
         'todo-with-time': '勾选待办事项时自动添加时间',
@@ -414,6 +417,7 @@ const data: BaseLanguage = {
         'md-breaks': '将 \\n 转换为 &lt;br&gt;',
         'md-linkify': '自动将类似 URL 的文本转换为链接',
         'md-wiki-links': '启用 Wiki 链接 - [[link]]',
+        'md-hash-tags': '启用哈希标签 - #tag',
         'md-typographer': '启用排版美化，如 (c) -> ©',
         'md-sup': '启用上标语法: 29^th^',
         'md-sub': '启用下标语法: H~2~O',
@@ -422,6 +426,8 @@ const data: BaseLanguage = {
         'multimd-rowspan': '[markdown-it-multimd-table]: 启用 rowspan 语法',
         'multimd-headerless': '[markdown-it-multimd-table]: 启用 headerless 语法',
         'multimd-multibody': '[markdown-it-multimd-table]: 启用 multibody 语法',
+        'text-autospace': '自动在中英文之间添加空格',
+        'extra-css-style': '自定义 CSS 样式',
       },
       'view': {
         'default-previewer-max-width': '预览区最大宽度',
@@ -489,6 +495,7 @@ const data: BaseLanguage = {
     'empty': '无结果',
     'files': '快速跳转',
     'marked': '已标记',
+    'tags': '标签',
   },
   'editor': {
     'context-menu': {

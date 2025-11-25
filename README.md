@@ -13,7 +13,7 @@ English | [中文说明](./README_ZH-CN.md) | [Русский](./README_RU.md)
 ## Highlights
 
 - **Easy to use:** Use *Monaco* kernel, optimize for Markdown editing, and have the same editing experience as VSCode.
-- **Powerful:** Support version control; Applets, runnable code blocks, tables, PlantUML, Drawio, macro replacements, etc., can be embedded in the document; support for [OpenAI](https://openai.com) auto completion.
+- **Powerful:** Support version control; Applets, runnable code blocks, tables, PlantUML, Drawio, macro replacements, etc., can be embedded in the document; support for AI Copilot.
 - **High compatibility:** Data is saved as local Markdown files, and the extension functions are implemented in the original syntax of Markdown as far as possible.
 - **Plug-in extension:** Support users to write their own plug-ins to expand the functionality of the editor.
 - **Encryption supported:** Use encryption to save private files such as account number, and the password can be set separately for each file.
@@ -63,7 +63,7 @@ For more information on how to use the following functions, please see [characte
 - **Macro replacement:** support for embedded JavaScript expressions to dynamically replace document content
 - **Image hosting service:** support [PicGo](https://picgo.github.io/PicGo-Doc/) image hosting service
 - **OpenAI:** support for [OpenAI](https://openai.com) auto completion
-- **Custom plug-ins:** support writing JavaScript plug-ins to expand editor functionality. The plug-in is placed in the `home directory/plugins`. Refer to [plug-in Development Guide](./help/PLUGIN.md)
+- **Custom plug-ins:** support writing JavaScript plug-ins to #expand editor functionality. The plug-in is placed in the `home directory/plugins`. Refer to [plug-in Development Guide](./help/PLUGIN.md)
 
 ## Screenshots
 
@@ -76,14 +76,16 @@ For more information on how to use the following functions, please see [characte
 
 ## Changelogs
 
-### [v3.82.1](https://github.com/purocean/yn/releases/tag/v3.82.1) 2025-03-30
+### [v3.85.1](https://github.com/purocean/yn/releases/tag/v3.85.1) 2025-11-25
 
-[Windows](https://github.com/purocean/yn/releases/download/v3.82.1/Yank-Note-win-x64-3.82.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.82.1/Yank-Note-mac-arm64-3.82.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.82.1/Yank-Note-mac-x64-3.82.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.82.1/Yank-Note-linux-x86_64-3.82.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.82.1/Yank-Note-linux-amd64-3.82.1.deb)
+[Windows](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-win-x64-3.85.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-arm64-3.85.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-x64-3.85.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-x86_64-3.85.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-amd64-3.85.1.deb)
 
-1. feat: Added font configuration for the preview area
-2. feat: Restrict Markdown syntax suggestions in the editor from displaying within code fences
-3. fix: Fixed the issue where exported HTML headings were not highlighted correctly in some cases
-4. feat(plugin): Added the `ctx.editor.getLineLanguageId` method to retrieve the language ID of a specific line
+1. feat: Add an option to automatically insert spaces between Chinese and English in the settings
+3. feat: Optimize the settings panel interaction, add a suggested list for image storage directories, and add code highlighting to custom CSS styles
+2. feat: Improve the interaction of the quick filter, add character highlighting
+4. feat: Upgrade Electron to 38.7.1
+5. fix: Fix the incorrect error message location in the settings panel
+6. feat(plugin): Add the text highlighting utility `ctx.utils.createTextHighlighter`
 
 [More release notes](https://github.com/purocean/yn/releases)
 

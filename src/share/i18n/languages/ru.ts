@@ -408,8 +408,11 @@ const data: BaseLanguage = {
         'ordered-list-completion': 'Упорядоченный список',
         'minimap': 'Мини-карта',
         'line-numbers': 'Номера строк',
+        'wrap-indent': 'Отступ при переносе строк',
         'enable-preview': 'Включить предпросмотр - открывать новые файлы с помощью временных вкладок, двойной клик по вкладке для изменения',
         'font-family': 'Семейство шрифтов',
+        'rulers': 'Линейки',
+        'mouse-wheel-scroll-sensitivity': 'Чувствительность прокрутки мышью',
         'font-ligatures': 'Шрифтовые лигатуры',
         'complete-emoji': 'Полный список эмодзи - введите : для отображения списка эмодзи',
         'todo-with-time': 'Добавлять время при проверке TODO',
@@ -424,6 +427,7 @@ const data: BaseLanguage = {
         'md-breaks': 'Преобразовать \\n в &lt;br&gt;',
         'md-linkify': 'Автоматическое преобразование текста, похожего на URL, в ссылки',
         'md-wiki-links': 'Включить Wiki ссылки - [[ссылка]]',
+        'md-hash-tags': 'Включить хештеги - #тег',
         'md-typographer': 'Включите некоторые языковые замены + улучшение кавычек',
         'md-sup': 'Включить надстрочный синтаксис: 29^th^',
         'md-sub': 'Включить подстрочный синтаксис: H~2~O',
@@ -432,6 +436,8 @@ const data: BaseLanguage = {
         'multimd-rowspan': 'Включить синтаксис объединением рядов [multimd]:',
         'multimd-headerless': 'Включить синтаксис без заголовков [multimd]:',
         'multimd-multibody': 'Включить многокомпонентный синтаксис [multimd]:',
+        'text-autospace': 'Автоматически добавлять пробелы между CJK и полуширинными символами',
+        'extra-css-style': 'Пользовательский CSS стиль',
       },
       'view': {
         'default-previewer-max-width': 'Максимальная ширина окна предпросмотра',
@@ -489,6 +495,7 @@ const data: BaseLanguage = {
     'empty': 'Пусто',
     'files': 'Файлы',
     'marked': 'Отмеченные',
+    'tags': 'Теги',
   },
   'editor': {
     'context-menu': {

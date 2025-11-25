@@ -36,6 +36,7 @@ export type SettingSchema = {
     group: SettingGroup,
     openDialogOptions?: OpenDialogOptions,
     needReloadWindowWhenChanged?: boolean,
+    suggestions?: string[] | { label: string, value: string }[],
     validator?: (schema: SettingSchema['properties'][K], value: BuildInSettings[K], path: string) =>
       {path: string, property: K, message: string}[]
     items?: {
@@ -257,6 +258,35 @@ export namespace Components {
 
     export type SchemaTapper = (schema: Schema) => void
   }
+
+  export namespace QuickOpen {
+    export type TabKey = 'marked' | 'file' | 'tags'
+    type BaseDataItem = {
+      key: string,
+      type: string,
+      title: string,
+      description: string,
+      tip?: string,
+      marked: boolean,
+      payload: any,
+    }
+
+    export interface DataItemFile extends BaseDataItem {
+      type: 'file';
+      payload: BaseDoc;
+    }
+
+    export interface DataItemTag extends BaseDataItem {
+      type: 'tag';
+      payload: string;
+    }
+
+    export type DataItem = DataItemFile | DataItemTag;
+  }
+
+  export namespace IndexStatus {
+    export type Status = 'not-open-file' | 'not-open-repo' | 'not-same-repo' | 'index-disabled' | 'indexing' | 'indexed'
+  }
 }
 
 export type FileSort = { by: 'mtime' | 'birthtime' | 'name' | 'serial', order: 'asc' | 'desc' }
@@ -351,16 +381,20 @@ export interface BuildInSettings {
   'editor.enable-preview': boolean,
   'editor.enable-ai-copilot-action': boolean,
   'editor.font-family': string,
+  'editor.rulers': string,
+  'editor.mouse-wheel-scroll-sensitivity': number,
   'editor.complete-emoji': boolean,
   'editor.todo-with-time': boolean,
   'editor.suggest-on-trigger-characters': boolean,
   'editor.quick-suggestions': boolean,
   'editor.sticky-scroll-enabled': boolean,
   'editor.enable-trigger-suggest-bulb': boolean,
+  'editor.wrap-indent': 'same' | 'indent' | 'deepIndent' | 'none',
   'render.md-html': boolean,
   'render.md-breaks': boolean,
   'render.md-linkify': boolean,
   'render.md-wiki-links': boolean,
+  'render.md-hash-tags': boolean,
   'render.md-typographer': boolean,
   'render.md-emoji': boolean,
   'render.md-sub': boolean,
@@ -369,6 +403,8 @@ export interface BuildInSettings {
   'render.multimd-rowspan': boolean,
   'render.multimd-headerless': boolean,
   'render.multimd-multibody': boolean,
+  'render.text-autospace': boolean,
+  'render.extra-css-style': string,
   'view.default-previewer-max-width': number,
   'view.default-previewer-font-family': string,
   'assets.path-type': 'relative' | 'absolute' | 'auto',
@@ -420,8 +456,8 @@ export type BuildInActions = {
   'editor.toggle-wrap': () => void,
   'editor.refresh-custom-editor': () => void,
   'editor.trigger-save': () => void,
-  'workbench.show-quick-open': () => void,
-  'filter.choose-document': (filter?: (item: BaseDoc) => boolean) => Promise<Doc | null>,
+  'workbench.show-quick-open': (options?: { query?: string, tab?: Components.QuickOpen.TabKey }) => void,
+  'filter.choose-document': (filter?: (item: BaseDoc) => boolean) => Promise<BaseDoc | null>,
   'file-tabs.switch-left': () => void,
   'file-tabs.switch-right': () => void,
   'file-tabs.close-current': () => void,
@@ -526,7 +562,8 @@ export type BuildInHookTypes = {
   DOC_PRE_ENSURE_CURRENT_FILE_SAVED: never,
   I18N_CHANGE_LANGUAGE: { lang: LanguageName, currentLang: Language },
   SETTING_PANEL_BEFORE_SHOW: {},
-  SETTING_PANEL_AFTER_SHOW: {},
+  SETTING_PANEL_AFTER_SHOW: { editor: any },
+  SETTING_PANEL_BEFORE_CLOSE: { editor: any },
   SETTING_CHANGED: { schema: SettingSchema, changedKeys: (keyof BuildInSettings)[], oldSettings: BuildInSettings, settings: BuildInSettings }
   SETTING_FETCHED: { settings: BuildInSettings, oldSettings: BuildInSettings },
   SETTING_BEFORE_WRITE: { settings: Partial<BuildInSettings> },
@@ -657,6 +694,7 @@ export interface IndexItem {
   path: string;
   name: string;
   links: IndexItemLink[];
+  tags: string[];
   resources: IndexItemResource[];
   frontmatter: {};
   ctimeMs: number;

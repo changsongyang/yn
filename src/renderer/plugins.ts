@@ -61,6 +61,7 @@ import markdownLuckysheet from '@fe/plugins/markdown-luckysheet'
 import markdownContainer from '@fe/plugins/markdown-container'
 import markdownHeadingNumber from '@fe/plugins/markdown-heading-number'
 import markdownGithubAlerts from '@fe/plugins/markdown-github-alerts'
+import markdownHashtags from '@fe/plugins/markdown-hashtags'
 import markdownMisc from '@fe/plugins/misc'
 import syncScroll from '@fe/plugins/sync-scroll'
 import imageLocalization from '@fe/plugins/image-localization'
@@ -77,6 +78,7 @@ import aiCopilot from '@fe/plugins/ai-copilot'
 import viewLinks from '@fe/plugins/view-links'
 import insertTable from '@fe/plugins/insert-table'
 import textComparator from '@fe/plugins/text-comparator'
+import textAutospace from '@fe/plugins/text-autospace'
 
 export default [
   buildInRenderers,
@@ -141,6 +143,8 @@ export default [
   markdownLuckysheet,
   markdownContainer,
   markdownHeadingNumber,
+  markdownGithubAlerts,
+  markdownHashtags,
   markdownMisc,
   syncScroll,
   imageLocalization,
@@ -153,9 +157,9 @@ export default [
   previewFont,
   dropToOpenFile,
   recordRecentDocument,
-  markdownGithubAlerts,
   aiCopilot,
   viewLinks,
   insertTable,
   textComparator,
+  textAutospace,
 ]

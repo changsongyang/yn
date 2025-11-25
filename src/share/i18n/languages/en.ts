@@ -407,8 +407,11 @@ const data = {
         'ordered-list-completion': 'Ordered List',
         'minimap': 'Minimap',
         'line-numbers': 'Line Numbers',
+        'wrap-indent': 'Wrap Indent',
         'enable-preview': 'Enable Preview - Open new files using temporary tabs, double click the tab to change',
         'font-family': 'Font Family',
+        'rulers': 'Rulers',
+        'mouse-wheel-scroll-sensitivity': 'Mouse Wheel Scroll Sensitivity',
         'font-ligatures': 'Font Ligatures',
         'complete-emoji': 'Complete Emoji - Input : to display emoji list',
         'todo-with-time': 'Add time when checking todo',
@@ -423,6 +426,7 @@ const data = {
         'md-breaks': 'Convert \\n to &lt;br&gt;',
         'md-linkify': 'Auto convert URL-like text to links',
         'md-wiki-links': 'Enable Wiki Links - [[link]]',
+        'md-hash-tags': 'Enable Hash Tags - #tag',
         'md-typographer': 'Enable some language-neutral replacement + quotes beautification',
         'md-sup': 'Enable sup syntax: 29^th^',
         'md-sub': 'Enable sub syntax: H~2~O',
@@ -431,6 +435,8 @@ const data = {
         'multimd-rowspan': '[markdown-it-multimd-table]: Enable rowspan syntax',
         'multimd-headerless': '[markdown-it-multimd-table]: Enable headerless syntax',
         'multimd-multibody': '[markdown-it-multimd-table]: Enable multibody syntax',
+        'text-autospace': 'Auto add spaces between CJK and half-width characters',
+        'extra-css-style': 'Custom CSS Style',
       },
       'view': {
         'default-previewer-max-width': 'Previewer Max Width',
@@ -488,6 +494,7 @@ const data = {
     'empty': 'Empty',
     'files': 'Files',
     'marked': 'Marked',
+    'tags': 'Tags',
   },
   'editor': {
     'context-menu': {

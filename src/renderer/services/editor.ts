@@ -73,8 +73,7 @@ export const getDefaultOptions = (): Monaco.editor.IStandaloneEditorConstruction
   links: !isElectron,
   // wordWrapColumn: 40,
   mouseWheelZoom: getSetting('editor.mouse-wheel-zoom', true),
-  // try "same", "indent" or "none"
-  wrappingIndent: 'same',
+  wrappingIndent: getSetting('editor.wrap-indent', 'same'),
   smoothScrolling: true,
   cursorBlinking: 'smooth',
   scrollbar: getSetting('editor.minimap', true) ? {
@@ -101,7 +100,9 @@ export const getDefaultOptions = (): Monaco.editor.IStandaloneEditorConstruction
   stickyScroll: { enabled: getSetting('editor.sticky-scroll-enabled', true) },
   lightbulb: { enabled: 'on' as any },
   fontLigatures: getSetting('editor.font-ligatures', false),
-  wordSeparators: '`~!@#$%^&*()-=+[{]}\\|;:\'",.<>/?。？！，、；：“”‘’（）《》〈〉【】『』「」﹃﹄〔〕'
+  wordSeparators: '`~!@#$%^&*()-=+[{]}\\|;:\'",.<>/?。？！，、；：“”‘’（）《》〈〉【】『』「」﹃﹄〔〕',
+  rulers: getSetting('editor.rulers', '').split(',').filter(Boolean).map(Number),
+  mouseWheelScrollSensitivity: getSetting('editor.mouse-wheel-scroll-sensitivity', 1.0),
 })
 
 /**
