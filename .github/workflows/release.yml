@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-13
+          - os: macos-15
             platform: 'mac'
           - os: windows-2022
             platform: 'win'
