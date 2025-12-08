@@ -12,6 +12,7 @@ import io, { Socket } from 'socket.io-client'
 import { defineComponent, nextTick, onBeforeMount, onBeforeUnmount, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
+import { WebLinksAddon } from 'xterm-addon-web-links'
 import { OneHalfLight, OneHalfDark } from 'xterm-theme'
 import { getLogger, sleep } from '@fe/utils'
 import { registerHook, removeHook } from '@fe/core/hook'
@@ -40,6 +41,7 @@ export default defineComponent({
     let socket: Socket | null = null
 
     const fitAddon = new FitAddon()
+    const webLinksAddon = new WebLinksAddon()
 
     function fitXterm () {
       if (store.state.showXterm) {
@@ -81,6 +83,7 @@ export default defineComponent({
         changeTheme()
 
         xterm.loadAddon(fitAddon)
+        xterm.loadAddon(webLinksAddon)
 
         xterm.open(refXterm.value!)
         fitAddon.fit()
