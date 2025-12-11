@@ -13,6 +13,7 @@ import { getLogger } from '@fe/utils'
 import { registerHook, removeHook } from '@fe/core/hook'
 import { $args, FLAG_DEMO, FLAG_DISABLE_XTERM } from '@fe/support/args'
 import { getColorScheme } from '@fe/services/theme'
+import { openWindow } from '@fe/support/env'
 import { t } from '@fe/services/i18n'
 import type { Components } from '@fe/types'
 
@@ -74,7 +75,9 @@ export default defineComponent({
         changeTheme()
 
         fitAddon = new FitAddon()
-        webLinksAddon = new WebLinksAddon()
+        webLinksAddon = new WebLinksAddon((_e, uri) => {
+          openWindow(uri)
+        })
 
         xterm.loadAddon(fitAddon)
         xterm.loadAddon(webLinksAddon)
