@@ -5,9 +5,9 @@
 <script lang="ts">
 import io, { Socket } from 'socket.io-client'
 import { defineComponent, onBeforeUnmount, ref } from 'vue'
-import { Terminal } from 'xterm'
-import { FitAddon } from 'xterm-addon-fit'
-import { WebLinksAddon } from 'xterm-addon-web-links'
+import { Terminal } from '@xterm/xterm'
+import { FitAddon } from '@xterm/addon-fit'
+import { WebLinksAddon } from '@xterm/addon-web-links'
 import { OneHalfLight, OneHalfDark } from 'xterm-theme'
 import { getLogger } from '@fe/utils'
 import { registerHook, removeHook } from '@fe/core/hook'
@@ -16,7 +16,7 @@ import { getColorScheme } from '@fe/services/theme'
 import { t } from '@fe/services/i18n'
 import type { Components } from '@fe/types'
 
-import 'xterm/css/xterm.css'
+import '@xterm/xterm/css/xterm.css'
 
 const logger = getLogger('component-x-term')
 
@@ -38,10 +38,12 @@ export default defineComponent({
     }
 
     function changeTheme () {
-      const dark = getColorScheme() === 'dark'
-      OneHalfDark.background = '#1a1b1d'
-      OneHalfLight.selection = 'rgba(0, 0, 0, .1)'
-      xterm!.setOption('theme', dark ? OneHalfDark : OneHalfLight)
+      if (xterm) {
+        const dark = getColorScheme() === 'dark'
+        OneHalfDark.background = '#1a1b1d'
+        OneHalfLight.selection = 'rgba(0, 0, 0, .1)'
+        xterm.options.theme = dark ? OneHalfDark : OneHalfLight
+      }
     }
 
     function input (data: string) {
