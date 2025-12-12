@@ -293,6 +293,7 @@ export namespace Components {
   export namespace XTerm {
     export type InitOpts = {
       cwd?: string,
+      env?: Record<string, string>
       onDisconnect?: () => void,
     } & ITerminalOptions
 

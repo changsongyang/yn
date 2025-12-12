@@ -798,12 +798,14 @@ const server = (port = 3000) => {
     }
 
     if (pty) {
+      const env = JSON.parse(socket.handshake.query.env || '{}')
+
       const ptyProcess = pty.spawn(shell.getShell(), [], {
         name: 'xterm-color',
         cols: 80,
         rows: 24,
         cwd: socket.handshake.query.cwd || HOME_DIR,
-        env: process.env,
+        env: { ...process.env, ...env },
         useConpty: false,
       })
 
