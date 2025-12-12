@@ -1,5 +1,5 @@
 <template>
-  <div class="xterm" ref="domRef" style="height: 100%; width: 100%;" />
+  <div class="xterm-dom" ref="domRef" style="height: 100%; width: 100%;" />
 </template>
 
 <script lang="ts">
@@ -8,6 +8,7 @@ import { defineComponent, onBeforeUnmount, ref } from 'vue'
 import { Terminal } from '@xterm/xterm'
 import { FitAddon } from '@xterm/addon-fit'
 import { WebLinksAddon } from '@xterm/addon-web-links'
+import { WebglAddon } from '@xterm/addon-webgl'
 import { OneHalfLight, OneHalfDark } from 'xterm-theme'
 import { getLogger } from '@fe/utils'
 import { registerHook, removeHook } from '@fe/core/hook'
@@ -33,6 +34,7 @@ export default defineComponent({
 
     let fitAddon: FitAddon | null = null
     let webLinksAddon: WebLinksAddon | null = null
+    let webglAddon: WebglAddon | null = null
 
     function fitXterm () {
       fitAddon?.fit()
@@ -75,12 +77,14 @@ export default defineComponent({
         changeTheme()
 
         fitAddon = new FitAddon()
+        webglAddon = new WebglAddon()
         webLinksAddon = new WebLinksAddon((_e, uri) => {
           openWindow(uri)
         })
 
         xterm.loadAddon(fitAddon)
         xterm.loadAddon(webLinksAddon)
+        xterm.loadAddon(webglAddon)
 
         xterm.open(domRef.value!)
         fitAddon.fit()
@@ -179,7 +183,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.xterm ::v-deep(textarea) {
+.xterm-dom ::v-deep(textarea) {
   transition: none;
 }
 </style>
