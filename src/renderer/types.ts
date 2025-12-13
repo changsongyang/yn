@@ -5,6 +5,8 @@ import type { BaseDoc, Doc, FileItem, PathItem, Repo } from '@share/types'
 import type MarkdownIt from 'markdown-it'
 import type Token from 'markdown-it/lib/token'
 import type * as Monaco from 'monaco-editor'
+import type { ITerminalOptions, Terminal } from '@xterm/xterm'
+import type { Socket } from 'socket.io-client'
 
 export * from '@share/types'
 
@@ -287,6 +289,24 @@ export namespace Components {
   export namespace IndexStatus {
     export type Status = 'not-open-file' | 'not-open-repo' | 'not-same-repo' | 'index-disabled' | 'indexing' | 'indexed'
   }
+
+  export namespace XTerm {
+    export type InitOpts = {
+      cwd?: string,
+      env?: Record<string, string>
+      onDisconnect?: () => void,
+    } & ITerminalOptions
+
+    export interface Ref {
+      domRef: any;
+      init: (opts?: InitOpts) => void;
+      input: (data: string, addNewLine?: boolean) => void;
+      fit: () => void;
+      dispose: () => void;
+      getXterm: () => Terminal | null
+      getSocket: () => Socket | null;
+    }
+  }
 }
 
 export type FileSort = { by: 'mtime' | 'birthtime' | 'name' | 'serial', order: 'asc' | 'desc' }
@@ -465,7 +485,7 @@ export type BuildInActions = {
   'file-tabs.refresh-action-btns': () => void,
   'file-tabs.close-tabs': (keys: string[]) => void,
   'xterm.run': (cmd: { code: string, start: string, exit?: string } | string) => void,
-  'xterm.init': (opts?: { cwd?: string }) => void,
+  'xterm.init': (opts?: Components.XTerm.InitOpts) => void,
   'plugin.document-history-stack.back': () => void,
   'plugin.document-history-stack.forward': () => void,
   'plugin.image-hosting-picgo.upload': (file: File) => Promise<string | undefined>,

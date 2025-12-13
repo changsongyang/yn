@@ -76,16 +76,13 @@ For more information on how to use the following functions, please see [characte
 
 ## Changelogs
 
-### [v3.85.1](https://github.com/purocean/yn/releases/tag/v3.85.1) 2025-11-25
+### [v3.86.1](https://github.com/purocean/yn/releases/tag/v3.86.1) 2025-12-13
 
-[Windows](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-win-x64-3.85.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-arm64-3.85.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-x64-3.85.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-x86_64-3.85.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-amd64-3.85.1.deb)
+[Windows](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-win-x64-3.86.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-mac-arm64-3.86.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-mac-x64-3.86.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-linux-x86_64-3.86.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-linux-amd64-3.86.1.deb)
 
-1. feat: Add an option to automatically insert spaces between Chinese and English in the settings
-3. feat: Optimize the settings panel interaction, add a suggested list for image storage directories, and add code highlighting to custom CSS styles
-2. feat: Improve the interaction of the quick filter, add character highlighting
-4. feat: Upgrade Electron to 38.7.1
-5. fix: Fix the incorrect error message location in the settings panel
-6. feat(plugin): Add the text highlighting utility `ctx.utils.createTextHighlighter`
+1. feat: Terminal on Windows uses ConPTY
+2. fix: Fixed some issues with HTML parsing
+3. feat(plugin): Plugins can use the added XTerm component to connect to terminal
 
 [More release notes](https://github.com/purocean/yn/releases)
 

@@ -13,7 +13,7 @@
       <SearchPanel />
     </template>
     <template v-slot:terminal>
-      <Xterm @hide="hideXterm" />
+      <Terminal @hide="hideXterm" />
     </template>
     <template v-slot:editor>
       <Editor />
@@ -53,7 +53,7 @@ import SvgIcon from '@fe/components/SvgIcon.vue'
 import TitleBar from '@fe/components/TitleBar.vue'
 import StatusBar from '@fe/components/StatusBar.vue'
 import Tree from '@fe/components/Tree.vue'
-import Xterm from '@fe/components/Xterm.vue'
+import Terminal from '@fe/components/Terminal.vue'
 import FileTabs from '@fe/components/FileTabs.vue'
 import Editor from '@fe/components/Editor.vue'
 import Previewer from '@fe/components/Previewer.vue'
@@ -78,7 +78,7 @@ export default defineComponent({
     TitleBar,
     StatusBar,
     Tree,
-    Xterm,
+    Terminal,
     FileTabs,
     Editor,
     Previewer,

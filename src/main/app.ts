@@ -5,7 +5,7 @@ import * as path from 'path'
 import * as os from 'os'
 import * as fs from 'fs-extra'
 import * as yargs from 'yargs'
-import httpServer from './server'
+import httpServer, { killPtyProcesses } from './server'
 import store from './storage'
 import { APP_NAME } from './constant'
 import { getTrayMenus, getMainMenus } from './menus'
@@ -406,6 +406,7 @@ const quit = async () => {
   }
 
   await ensureDocumentSaved()
+  await killPtyProcesses()
 
   win.destroy()
   app.quit()
