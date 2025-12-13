@@ -114,7 +114,7 @@ export default defineComponent({
 
       const query = {
         cwd: opts?.cwd || '',
-        env: JSON.stringify(opts?.env)
+        env: JSON.stringify(opts?.env || {}),
       }
 
       if (!socket) {
