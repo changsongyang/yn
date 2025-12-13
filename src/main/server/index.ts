@@ -729,6 +729,42 @@ const wrapper = async (ctx: any, next: any, fun: any) => {
   }
 }
 
+const ptyProcesses: NodePty.IPty[] = []
+
+export async function killPtyProcesses (pty?: NodePty.IPty) {
+  const kill = async (ptyProcess: NodePty.IPty) => {
+    const index = ptyProcesses.indexOf(ptyProcess)
+    if (index >= 0) {
+      ptyProcesses.splice(index, 1)
+    } else {
+      // already killed
+      return
+    }
+
+    const promise = Promise.race([
+      new Promise<void>((resolve) => {
+        ptyProcess.onExit(() => resolve())
+      }),
+      new Promise<void>((resolve) => {
+        setTimeout(() => resolve(), 500)
+      })
+    ])
+
+    ptyProcess.kill()
+
+    await promise
+  }
+
+  if (pty) {
+    await kill(pty)
+  } else {
+    for (const ptyProcess of [...ptyProcesses]) {
+      await kill(ptyProcess)
+    }
+    ptyProcesses.length = 0
+  }
+}
+
 const server = (port = 3000) => {
   const app = new Koa()
 
@@ -808,8 +844,10 @@ const server = (port = 3000) => {
         env: { ...process.env, ...env },
       })
 
+      ptyProcesses.push(ptyProcess)
+
       const kill = () => {
-        ptyProcess.kill()
+        killPtyProcesses(ptyProcess)
       }
 
       ptyProcess.onData((data: any) => socket.emit('output', data))
