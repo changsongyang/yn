@@ -36,8 +36,19 @@ export default defineComponent({
     let webLinksAddon: WebLinksAddon | null = null
     let webglAddon: WebglAddon | null = null
 
+    function resetPaddingLeft () {
+      const element = domRef.value
+      const width = element?.offsetWidth || 0
+      const xtermScreen = element?.querySelector('.xterm-screen') as HTMLElement
+      const xtermScreenWidth = xtermScreen?.offsetWidth || 0
+      const paddingLeft = Math.max(0, (width - xtermScreenWidth) / 2) + 1
+      xtermScreen.style.marginLeft = paddingLeft + 'px'
+    }
+
     function fitXterm () {
       fitAddon?.fit()
+
+      resetPaddingLeft()
     }
 
     function changeTheme () {
