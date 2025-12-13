@@ -14,7 +14,7 @@ import { getLogger } from '@fe/utils'
 import { registerHook, removeHook } from '@fe/core/hook'
 import { $args, FLAG_DEMO, FLAG_DISABLE_XTERM } from '@fe/support/args'
 import { getColorScheme } from '@fe/services/theme'
-import { openWindow } from '@fe/support/env'
+import { isWindows, openWindow } from '@fe/support/env'
 import { t } from '@fe/services/i18n'
 import type { Components } from '@fe/types'
 
@@ -50,8 +50,13 @@ export default defineComponent({
       }
     }
 
-    function input (data: string) {
+    function input (data: string, addNewLine?: boolean) {
       socket?.emit('input', data)
+
+      if (addNewLine) {
+        const eol = isWindows ? '\r\n' : '\n'
+        socket?.emit('input', eol)
+      }
     }
 
     function focus () {

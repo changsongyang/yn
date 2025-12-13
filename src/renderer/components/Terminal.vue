@@ -13,7 +13,6 @@ import { getLogger, sleep } from '@fe/utils'
 import { registerAction, removeAction } from '@fe/core/action'
 import { FLAG_DISABLE_XTERM } from '@fe/support/args'
 import { toggleXterm } from '@fe/services/layout'
-import { isWindows } from '@fe/support/env'
 import type { Components } from '@fe/types'
 import SvgIcon from './SvgIcon.vue'
 import XTerm from './Xterm.vue'
@@ -37,8 +36,8 @@ export default defineComponent({
       })
     }
 
-    function input (data: string) {
-      refXterm.value?.input(data)
+    function input (data: string, addNewLine?: boolean) {
+      refXterm.value?.input(data, addNewLine)
     }
 
     async function runInXterm (cmd: { code: string, start?: string, exit?: string } | string) {
@@ -53,27 +52,22 @@ export default defineComponent({
 
       init()
 
-      const eol = isWindows ? '\r\n' : '\n'
-
       if (typeof cmd === 'string') {
         cmd = { code: cmd }
       }
 
       if (cmd.start) {
-        input(cmd.start)
-        input(eol)
+        input(cmd.start, true)
         // wait for child process ready.
         await sleep(400)
       }
 
       cmd.code.split('\n').forEach(x => {
-        input(x)
-        input(eol)
+        input(x, true)
       })
 
       if (cmd.exit) {
-        input(cmd.exit)
-        input(eol)
+        input(cmd.exit, true)
       }
     }
 

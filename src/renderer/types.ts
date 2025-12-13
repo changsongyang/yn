@@ -300,7 +300,7 @@ export namespace Components {
     export interface Ref {
       domRef: any;
       init: (opts?: InitOpts) => void;
-      input: (data: string) => void;
+      input: (data: string, addNewLine?: boolean) => void;
       fit: () => void;
       dispose: () => void;
       getXterm: () => Terminal | null
