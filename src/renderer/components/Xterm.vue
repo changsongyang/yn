@@ -131,7 +131,7 @@ export default defineComponent({
         socket = io(uri, { path: '/ws', query })
 
         xterm.onResize(size => socket!.emit('resize', [size.cols, size.rows]))
-        xterm.onData(input)
+        xterm.onData(data => socket!.emit('input', data))
         socket.on('output', (arrayBuffer: any) => xterm!.write(arrayBuffer))
         socket.on('disconnect', () => {
           dispose()
