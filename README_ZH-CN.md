@@ -76,16 +76,13 @@
 
 ## 更新日志
 
-### [v3.85.1](https://github.com/purocean/yn/releases/tag/v3.85.1) 2025-11-25
+### [v3.86.1](https://github.com/purocean/yn/releases/tag/v3.86.1) 2025-12-13
 
-[Windows](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-win-x64-3.85.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-arm64-3.85.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-mac-x64-3.85.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-x86_64-3.85.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.85.1/Yank-Note-linux-amd64-3.85.1.deb)
+[Windows](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-win-x64-3.86.1.exe) | [macOS arm64](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-mac-arm64-3.86.1.dmg) | [macOS x64](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-mac-x64-3.86.1.dmg) | [Linux AppImage](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-linux-x86_64-3.86.1.AppImage) | [Linux deb](https://github.com/purocean/yn/releases/download/v3.86.1/Yank-Note-linux-amd64-3.86.1.deb)
 
-1. feat: 设置中增加自动在中英文之间添加空格选项
-3. feat: 优化设置面板交互，图片存放目录增加建议列表，自定义 CSS 样式 增加代码高亮
-2. feat: 快捷筛选器交互，增加字符高亮
-4. feat: 升级 Electron 到 38.7.1
-5. fix: 修复设置面板错误提示位置不正确问题
-6. feat(plugin): 增加 `ctx.utils.createTextHighlighter` 文本高亮工具函数
+1. feat: Windows 上终端使用 ConPTY
+2. fix: 修复解析 HTML 的一些问题
+3. feat(plugin): 插件中可使用增加 XTerm 组件连接终端
 
 [更多发布说明](https://github.com/purocean/yn/releases)
 
