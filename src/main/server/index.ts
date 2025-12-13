@@ -806,7 +806,6 @@ const server = (port = 3000) => {
         rows: 24,
         cwd: socket.handshake.query.cwd || HOME_DIR,
         env: { ...process.env, ...env },
-        useConpty: false,
       })
 
       const kill = () => {
